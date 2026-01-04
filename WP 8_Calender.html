@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+    <title>calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        td.sunday,
+        td.second-saturday {
+            color: red;
+        }
+
+        td.second-saturday {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Calendar Generator</h2>
+    <label for="year">Enter Year:</label>
+    <input type="number" id="year" placeholder="Enter year" min="1900" max="2100">
+    <label for="month">Enter Month:</label>
+    <input type="number" id="month" placeholder="Enter month" min="1" max="12">
+    <button onclick="generateCalendar();">Generate Calendar</button>
+    <div id="calendar-container"></div>
+    <script>
+        function generateCalendar() {
+            const year = document.getElementById('year').value;
+            const month = document.getElementById('month').value;
+            const calendarContainer = document.getElementById('calendar-container');
+            if (!year | !month) {
+                alert('Please enter both year and month.');
+                return;
+            }
+            const daysInMonth = new Date(year, month, 0).getDate();
+            const firstDay = new Date(year, month - 1, 1).getDay();
+            let calendarHTML = '<table>';
+            calendarHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th> Fri</th> <th>Sat</th></tr >';
+            let dayCounter = 1;
+            for (let i = 0; i < 6; i++) {
+                calendarHTML += '<tr>';
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        calendarHTML += '<td></td>';
+                    } else if (dayCounter <= daysInMonth) {
+                        const currentDate = new Date(year, month - 1, dayCounter);
+                        const isSunday = currentDate.getDay() === 0;
+                        const isSecondSaturday = currentDate.getDay() === 6 && Math.ceil(dayCounter / 7) === 2;
+                        let className = isSunday ? 'sunday' : (isSecondSaturday ? 'second-saturday' : '');
+                        calendarHTML += `<td class="${className}" 
+                        onclick="alert('You clicked on ${currentDate.toDateString()}')">${dayCounter}</td>`;
+                        dayCounter++;
+                    } else {
+                        calendarHTML += '<td></td>';
+                    }
+                }
+                calendarHTML += '</tr>';
+            }
+            calendarHTML += '</table>';
+            calendarContainer.innerHTML = calendarHTML;
+        }
+
+    </script>
+</body>
+
+
+
+</html>

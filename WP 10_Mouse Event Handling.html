@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Mouse Event</title>
+</head>
+
+<body style="text-align:center">
+    <h2 id="h2">Spiral</h2>
+    <img id="img-tag" src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"
+        onmouseover="changeImg()" onmouseout="setOld()" width="220px" height="230px" alt="image" />
+    <script>
+        function changeImg() {
+            document.getElementById("h2").textContent = "Phoenix";
+            document.getElementById("img-tag").src =
+                "https://miro.medium.com/v2/resize:fit:4800/format:webp/0*82UTZ7tjluhqLLUA";
+        }
+        function setOld() {
+            document.getElementById("img-tag").src =
+                "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg";
+            document.getElementById("h2").textContent = "Spiral";
+
+        }
+    </script>
+</body>
+
+</html>

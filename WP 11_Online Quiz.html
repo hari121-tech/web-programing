@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Quiz</title>
+    <style>
+        .question {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .answers label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2><u>Online Quiz</u></h2>
+    <div id="quiz"></div>
+    <button id="submit">Submit Answers</button>
+    <div id="results"></div>
+
+    <script>
+        // Quiz questions and answers
+        const myQuestions = [
+            {
+                question: "1.What is 2 + 2?",
+                answers: { a: "2", b: "4", c: "8" },
+                correctAnswer: "b"
+            },
+            {
+                question: "2.What is the capital of France?",
+                answers: { a: "London", b: "Berlin", c: "Paris" },
+                correctAnswer: "c"
+            },
+            {
+                question: "3.Which is a prime number?",
+                answers: { a: "4", b: "6", c: "7" },
+                correctAnswer: "c"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const submitButton = document.getElementById('submit');
+
+        function buildQuiz() {
+            const output = [];
+
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+                const answers = [];
+
+                for (letter in currentQuestion.answers) {
+                    answers.push(
+                        `<label>
+             <input type="radio" name="question${questionNumber}" value="${letter}">
+             ${letter} : ${currentQuestion.answers[letter]}
+           </label>`
+                    );
+                }
+
+                output.push(
+                    `<div class="question">${currentQuestion.question}</div>
+         <div class="answers">${answers.join('')}</div>`
+                );
+            });
+
+            quizContainer.innerHTML = output.join('');
+        }
+
+        function showResults() {
+            const answerContainers = quizContainer.querySelectorAll('.answers');
+            let numCorrect = 0;
+
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+                const answerContainer = answerContainers[questionNumber];
+                const selector = `input[name=question${questionNumber}]:checked`;
+                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+                if (userAnswer === currentQuestion.correctAnswer) {
+                    numCorrect++;
+                    answerContainers[questionNumber].style.color = 'green';
+                } else {
+                    answerContainers[questionNumber].style.color = 'red';
+                }
+            });
+
+            resultsContainer.innerHTML = `Your score: ${numCorrect} out of ${myQuestions.length}`;
+        }
+
+        buildQuiz();
+
+        submitButton.addEventListener('click', showResults);
+    </script>
+
+</body>
+
+</html>

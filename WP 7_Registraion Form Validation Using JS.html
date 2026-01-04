@@ -1,0 +1,210 @@
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        input[type=password] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type=submit],
+        input[type=reset] {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type=submit] {
+            background: #4caf50;
+        }
+
+        input[type=reset] {
+            background: #f44336;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Registration Form</h2>
+
+        <p id="mainError" class="error"></p>
+
+        <p id="successMsg" class="success"></p>
+
+        <form id="regForm" onsubmit="return validateForm()">
+
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Your full name" />
+            <span class="error" id="fullnameError"></span>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" />
+            <span class="error" id="emailError"></span>
+
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Your mobile number" />
+            <span class="error" id="mobileError"></span>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Your username" />
+            <span class="error" id="usernameError"></span>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password" />
+            <span class="error" id="passwordError"></span>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" />
+            <span class="error" id="confirmPasswordError"></span>
+
+            <div class="btn-group">
+                <center><input type="submit" value="Register">
+                    <input type="reset" value="Reset">
+                </center>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Your same JS kept exactly as-is -->
+    <script>
+        /* validation script unchanged */
+        function validateForm() {
+            document.getElementById("mainError").innerHTML = "";
+            document.getElementById("successMsg").innerHTML = "";
+
+            document.getElementById("fullnameError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("mobileError").innerHTML = "";
+            document.getElementById("usernameError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+            document.getElementById("confirmPasswordError").innerHTML = "";
+
+            let fullname = document.getElementById("fullname").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+            let valid = true;
+
+            if (fullname === "" && email === "" && mobile === "" && username === "" && password === "" && confirmPassword === "") {
+                document.getElementById("mainError").innerHTML = "All fields are required";
+                valid = false;
+            }
+
+            if (fullname === "") {
+                document.getElementById("fullnameError").innerHTML = "Full name is required";
+                valid = false;
+            }
+            else {
+                const namePattern = /^[a-zA-Z\s]+$/;
+                if (!namePattern.test(fullname)) {
+                    document.getElementById("fullnameError").innerHTML = "Enter a Valid Name";
+                    valid = false;
+                }
+            }
+
+            if (email === "") {
+                document.getElementById("emailError").innerHTML = "Email is required";
+                valid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid email";
+                valid = false;
+            }
+
+            if (mobile === "") {
+                document.getElementById("mobileError").innerHTML = "Mobile number is required";
+                valid = false;
+            }
+            else if (isNaN(mobile)) {
+                document.getElementById("mobileError").innerHTML = "Enter a valid mobile number";
+                valid = false;
+            }
+            else if (!/^[0-9]{10}$/.test(mobile)) {
+                document.getElementById("mobileError").innerHTML = "Enter 10 digit mobile number";
+                valid = false;
+            }
+
+            if (username === "") {
+                document.getElementById("usernameError").innerHTML = "Username is required";
+                valid = false;
+            }
+
+            if (password === "") {
+                document.getElementById("passwordError").innerHTML = "Password is required";
+                valid = false;
+            } else if (password.length < 6) {
+                document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters";
+                valid = false;
+            }
+
+            if (confirmPassword === "") {
+                document.getElementById("confirmPasswordError").innerHTML = "Confirm your password";
+                valid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+                valid = false;
+            }
+
+            if (valid) {
+                document.getElementById("successMsg").innerHTML = "Registration successful!";
+                valid = false; // stop actual submission (keeps message on page)
+            }
+
+            return valid;
+        }
+    </script>
+
+</body>
+
+</html>

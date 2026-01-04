@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Advanced Tags</title>
+</head>
+
+<body>
+    <p id="label1">My First Paragraph</p>
+    <!--Lists-->
+    <!-- 1.Unordered List-->
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul> <!-- Default type="disc"-->
+    <ul type="disc">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+    <ul type="circle">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+    <ul type="square">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+    <!-- Ordered List-->
+    <ol>
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol><!-- Default type="1"-->
+    <ol type="1">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="A">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="a">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="i">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="I">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="1" start="3">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="A" start="4">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="a" start="4">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="i" start="2">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <ol type="I" start="2">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+    <!-- 3.Definition List-->
+    <dl>
+        <dt>Mouse</dt>
+        <dd>- Input Device</dd>
+        <dt>Speaker</dt>
+        <dd>- Output Device</dd>
+    </dl>
+    <!--Anchor Tag-->
+    <a href="https://www.google.com">Google</a><br>
+    <a href="https://www.google.com" target="_blank"s>Google</a><br>
+    <a href="login.html">Login</a><br>
+    <a href="#label1">Jump</a><br>
+    <a href="#">Home</a><br>
+    <a href="mailto:abc@gmail.com">email ABC</a><br>
+    <a href="tel:+91 98466 95322">+91 98466 95322</a><br>
+
+    <!-- images -->
+    <img src="Images\sachin.jpg" alt="sachin tendulkar" width="100" height="100"><br>
+    <img src="https://tse4.mm.bing.net/th/id/OIP.jUKVwQoiY_W1RJhr7JkkNgHaEK?pid=Api&P=0&h=180" alt="rose" width="200"
+        height="100" align="right"><br><br>
+
+    <!-- Table -->
+    <table border="1">
+        <tr>
+            <td>TD1</td>
+            <td>TD2</td>
+            <td>TD3</td>
+        </tr>
+        <tr>
+            <td>TD4</td>
+            <td>TD5</td>
+            <td>TD6</td>
+        </tr>
+    </table><br>
+
+    <!--Merge TD4 and TD5 using colspan-->
+    <table border="1">
+        <tr>
+            <td>TD1</td>
+            <td>TD2</td>
+            <td>TD3</td>
+        </tr>
+        <tr>
+            <td colspan="2">TD4</td>
+            <td>TD5</td>
+        </tr>
+    </table><br>
+
+    <!--Merge TD5 and TD6 using colspan-->
+    <table border="1">
+        <tr>
+            <td>TD1</td>
+            <td>TD2</td>
+            <td>TD3</td>
+        </tr>
+        <tr>
+            <td>TD4</td>
+            <td colspan="2">TD5</td>
+        </tr>
+    </table><br>
+
+    <!--Merge TD1 and TD4 using rowspan-->
+    <table border="1">
+        <tr>
+            <td rowspan="2">TD1</td>
+            <td>TD2</td>
+            <td>TD3</td>
+        </tr>
+        <tr>
+            <td>TD5</td>
+            <td>TD6</td>
+        </tr>
+    </table><br>
+
+    <!--Merge TD2 and TD5 using rowspan-->
+    <table border="1">
+        <tr>
+            <td>TD1</td>
+            <td rowspan="2">TD2</td>
+            <td>TD3</td>
+        </tr>
+        <tr>
+            <td>TD4</td>
+            <td>TD6</td>
+        </tr>
+    </table><br>
+
+    <!--Problem 1 using rowspan-->
+    <table border="1">
+        <tr>
+            <td rowspan="2">UG</td>
+            <td>B.TECH</td>
+        </tr>
+        <tr>
+            <td>B.COM </td>
+        </tr>
+        <tr>
+            <td rowspan="2">PG</td>
+            <td>M.TECH</td>
+        </tr>
+        <tr>
+            <td>M.COM </td>
+        </tr>
+    </table><br>
+
+    <!--Problem 2 using colspan-->
+    <table border="1">
+        <tr>
+            <td colspan="2">UG</td>
+            <td colspan="2">PG</td>
+        </tr>
+        <tr>
+            <td>B.TECH</td>
+            <td>B.COM</td>
+            <td>M.TECH</td>
+            <td>M.COM</td>
+        </tr>
+    </table><br>
+
+    <!--Problem 3-->
+    <table border="1">
+        <caption>Student Details</caption>
+        <tr bgcolor="skyblue">
+            <th width="150px">Roll_No</th>
+            <th width="150px">Name</th>
+            <th width="150px">Course</th>
+        </tr>
+        <tr bgcolor="lightgrey" align="center">
+            <td>101</td>
+            <td>Hari</td>
+            <td>MCA</td>
+        </tr>
+        <tr bgcolor="lightgrey" align="center">
+            <td>102</td>
+            <td>Ram</td>
+            <td>BCA</td>
+        </tr>
+        <tr bgcolor="lightgrey" align="center">
+            <td>103</td>
+            <td>Seetha</td>
+            <td>B.TECH</td>
+        </tr>
+    </table>
+
+    <!-- audio-->
+    <audio controls>
+        <source src="audio\1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!--Video-->
+    <video controls width="320" height="240">
+        <source src="video\1.mp4" type="video/mp4">
+    </video>
+
+    <!--HTML Form-->
+
+
+</body>
+
+</html>
